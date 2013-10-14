@@ -3,11 +3,16 @@ import re
 
 # vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
 
+# TODO: Have this take different formats
 def str_to_date(datestring):
     if datestring == "":
         return None
     result = datetime.datetime.strptime(datestring, "%m/%d/%Y")
     return result
+
+# TODO: Use this in get_formatted_vacation
+def date_to_str(date):
+    return date.strftime("%b %e, %Y")
 
 def expand_dates(dates_list):
     result = []

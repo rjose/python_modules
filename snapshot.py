@@ -80,8 +80,8 @@ class SnapshotService:
     # Event loop for handling snapshot PUT/GET requests.
     #
     def run(self):
-        try:
-            while True:
+        while True:
+            try:
                 message = io.StringIO(self.rep_socket.recv())
                 sections = sectionize(message)
         
@@ -93,9 +93,9 @@ class SnapshotService:
                     else:
                         print("TODO: Handle: %s" % header)
                         self.rep_socket.send_unicode("TODO: Handle %s" % header)
-        except Exception as e:
-            print("EXCEPTION: %s" % str(e))
-            self.rep_socket.send_unicode("ERROR: %s" % str(e))
+            except Exception as e:
+                print("EXCEPTION: %s" % str(e))
+                self.rep_socket.send_unicode("ERROR: %s" % str(e))
 
 
     #===========================================================================
